@@ -1,8 +1,4 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
   <router-view/>
 </template>
 
@@ -28,3 +24,11 @@ nav {
   }
 }
 </style>
+
+<script>
+import NavbarList from '@/components/NavbarList.vue'
+
+export default {
+  components: [NavbarList]
+}
+</script>
