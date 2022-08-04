@@ -32,7 +32,7 @@
     </header>
     <div class="about container mx-auto px-10">
       <div class="about-bg w-full h-screen relative">
-        <h2 class="text-red-400 pt-10 font-bold text-sm">About FruOats</h2>
+        <h2 class="text-red-400 pt-10 text-sm">About FruOats</h2>
         <div class="
         bg-white
         absolute -bottom-60 left-40 z-10
@@ -63,15 +63,52 @@
       </div>
     </div>
     <!-- 以下的圖片 要做簡易的視差滾動 -->
-    <div class="relative">
-      <div class="de-banner w-srceen h-screen mt-20">
+    <div class="de-banner relative mb-20">
+      <div class="de-banner-bg w-srceen h-screen mt-20">
       </div>
       <div class="absolute w-full -bottom-5 de-banner-text z-10" >
         <p class="text-white">Strawberry. Pistachio. Mango. Coconut. Apple. Cinnamon. Fig. Almond. Orange. Chocolate.</p>
       </div>
     </div>
-
+    <div class="featrue">
+      <h2 class="text-white py-10 text-sm">FruOats' s Feature</h2>
+      <ul class="flex flex-wrap justify-center">
+        <li class="w-3/12 bg-white rounded-md mx-1">
+        <div class="relative">
+            <p class="absolute text-white -top-12 left-5" style="font-size: 86px">1</p>
+            <img src="../assets/image/feature/static.index__feature_1.jpg" alt="" class="rounded-t-md">
+        </div>
+          <div class="p-5">
+            <h3 class="text-red-600 text-lg font-extrabold">植物由来の素材で<br>からだの中からキレイに</h3>
+            <p class="text-sm mt-5 text-left font-semibold">お菓子の材料によく使われる卵やバター、小麦粉、白砂糖は使用せず、オートミール、おからパウダー、チアシード、アマニ、ドライフルーツ、米油など、原材料は全て植物由来の素材を使用しています。また、人工甘味料や保存料も使用せず、からだにやさしいクッキーに仕上げました。</p>
+          </div>
+        </li>
+        <li class="w-3/12 bg-white rounded-md mx-1">
+        <div class="relative">
+            <p class="absolute text-white -top-12 left-5" style="font-size: 86px">2</p>
+            <img src="../assets/image/feature/static.index__feature_2.jpg" alt="" class="rounded-t-md">
+        </div>
+          <div class="p-5">
+            <h3 class="text-red-600 text-lg font-extrabold">3枚で1/2日分の食物繊維<br>糖質も約51%OFF</h3>
+            <p class="text-sm mt-5 text-left font-semibold">通常のクッキーと比べて栄養価は一目瞭然！低糖質で食物繊維がたっぷり。ほとんどの日本人が食物繊維不足で、20代~30代の男女で平均約6g不足しています。フルオーツならたった3枚(45g)で、1日に必要な食物繊維の1/2が摂れます。これは、バナナ約9~10本相当分です。</p>
+          </div>
+        </li>
+        <li class="w-3/12 bg-white rounded-md mx-1">
+        <div class="relative">
+            <p class="absolute text-white -top-12 left-5" style="font-size: 86px">3</p>
+            <img src="../assets/image/feature/static.index__feature_3.jpg" alt="" class="rounded-t-md">
+        </div>
+          <div class="p-5">
+            <h3 class="text-red-600 text-lg font-extrabold">現役パティシエ監修により<br>満足度95%※の美味しさを実現！</h3>
+            <p class="text-sm mt-5 text-left font-semibold">美味しく食べていただくために、「クープ・デュ・モンド・ドゥ・ラ・パティスリー」をはじめとする、パティシエの国際大会で優勝経験のある中山和大シェフに監修して頂きました。美味しい健康食品を作ることの難しさを痛感しながらも、栄養素や素材などに一切妥協せず、美味しく作り上げるために幾度の試行錯誤を重ねました。
+              <br><span class="text-xs">（※2021年9月調査 モニター41人）</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+  <div class="h-screen w-screen bg-gray-400"></div>
 </template>
 
 <style lang="scss">
@@ -97,7 +134,7 @@
     background-position: center center;
     background-size: cover;
   }
-  .de-banner{
+  .de-banner-bg{
     background: url('@/assets/image/about_img/static.index__eyecatch.jpg');
     background-position: center center;
     background-size:120%;
