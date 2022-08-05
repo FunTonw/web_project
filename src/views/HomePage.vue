@@ -224,9 +224,9 @@
         </ul>
       </div>
     </section>
-    <section class="contact">
+    <section class="contact py-20">
         <div class="contact-bg w-9/12 h-screen relative">
-          <div class="absolute translate-y-1/2 -right-48 bg-white p-10" style="width:400px">
+          <div class="absolute translate-y-1/3 -right-48 bg-white p-10" style="width:400px">
             <h3 class="text-sm text-red-400">Shop</h3>
             <h4 class="text-2xl text-red-400 text-start mt-10 font-bold">FruOats FACTORY</h4>
             <div class="mt-10 text-start leading-7 text-sm">
@@ -240,7 +240,7 @@
           </div>
         </div>
     </section>
-    <div class="h-screen"></div>
+    <FooterList />
   </div>
 </template>
 
@@ -320,9 +320,12 @@
 
 <script>
 import NavbarList from '@/components/NavbarList.vue'
+import FooterList from '@/components/FooterList.vue'
+
 export default {
   components: {
-    NavbarList
+    NavbarList,
+    FooterList
   }
 }
 </script>
