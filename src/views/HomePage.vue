@@ -224,6 +224,23 @@
         </ul>
       </div>
     </section>
+    <section class="contact">
+        <div class="contact-bg w-9/12 h-screen relative">
+          <div class="absolute translate-y-1/2 -right-48 bg-white p-10" style="width:400px">
+            <h3 class="text-sm text-red-400">Shop</h3>
+            <h4 class="text-2xl text-red-400 text-start mt-10 font-bold">FruOats FACTORY</h4>
+            <div class="mt-10 text-start leading-7 text-sm">
+            <p>2022年4月25日(月)よりグランドオープン</p>
+            <p class="font-bold">営業時間</p>
+            <p>月~金（祝日除く） 11:00~17:00</p>
+            <p class="font-bold">店舗所在地</p>
+            <p>東京都江東区扇橋1丁目12-20</p>
+            </div>
+            <button class="mt-10 bg-red-600 text-white px-14 py-3 rounded-full font-bold">もっと詳しく</button>
+          </div>
+        </div>
+    </section>
+    <div class="h-screen"></div>
   </div>
 </template>
 
@@ -293,6 +310,11 @@
     transform: rotate(20deg);
     background: url('@/assets/image/products/main/static.index__product.jpg');
     background-size: cover;
+  }
+  .contact-bg{
+    background: url('@/assets/image/contact/static.index__shop-eyecatch.webp');
+    background-size: fixed;
+    background-position: center;
   }
 </style>
 
