@@ -30,7 +30,7 @@
         </div>
       </div>
     </header>
-    <div class="about container mx-auto px-10">
+    <div class="about container mx-auto">
       <div class="about-bg w-full h-screen relative">
         <h2 class="text-red-400 pt-10 text-sm">About FruOats</h2>
         <div class="
@@ -66,14 +66,14 @@
     <section class="de-banner relative pb-20">
       <div class="de-banner-bg w-srceen h-screen mt-20">
       </div>
-      <div class="absolute w-full -bottom-5 z-10" >
+      <div class="absolute w-full bottom-14 z-10" >
         <p class="text-white de-banner-text">Strawberry. Pistachio. Mango. Coconut. Apple. Cinnamon. Fig. Almond. Orange. Chocolate.</p>
       </div>
     </section>
     <section class="featrue pb-20">
       <h2 class="text-white py-10 text-sm">FruOats' s Feature</h2>
-      <ul class="flex flex-wrap justify-center">
-        <li class="w-3/12 bg-white rounded-md mx-1">
+      <ul class="grid grid-cols-3 gap-3 max-w-screen-lg mx-auto">
+        <li class=" bg-white rounded-md ">
         <div class="relative">
             <p class="absolute text-white -top-12 left-5" style="font-size: 86px">1</p>
             <img src="../assets/image/feature/static.index__feature_1.jpg" alt="" class="rounded-t-md">
@@ -83,7 +83,7 @@
             <p class="text-sm mt-5 text-left font-semibold">お菓子の材料によく使われる卵やバター、小麦粉、白砂糖は使用せず、オートミール、おからパウダー、チアシード、アマニ、ドライフルーツ、米油など、原材料は全て植物由来の素材を使用しています。また、人工甘味料や保存料も使用せず、からだにやさしいクッキーに仕上げました。</p>
           </div>
         </li>
-        <li class="w-3/12 bg-white rounded-md mx-1">
+        <li class=" bg-white rounded-md ">
         <div class="relative">
             <p class="absolute text-white -top-12 left-5" style="font-size: 86px">2</p>
             <img src="../assets/image/feature/static.index__feature_2.jpg" alt="" class="rounded-t-md">
@@ -93,7 +93,7 @@
             <p class="text-sm mt-5 text-left font-semibold">通常のクッキーと比べて栄養価は一目瞭然！低糖質で食物繊維がたっぷり。ほとんどの日本人が食物繊維不足で、20代~30代の男女で平均約6g不足しています。フルオーツならたった3枚(45g)で、1日に必要な食物繊維の1/2が摂れます。これは、バナナ約9~10本相当分です。</p>
           </div>
         </li>
-        <li class="w-3/12 bg-white rounded-md mx-1">
+        <li class=" bg-white rounded-md ">
         <div class="relative">
             <p class="absolute text-white -top-12 left-5" style="font-size: 86px">3</p>
             <img src="../assets/image/feature/static.index__feature_3.jpg" alt="" class="rounded-t-md">
@@ -107,10 +107,10 @@
         </li>
       </ul>
     </section>
-    <section class="story">
+    <section class="story pb-20">
       <div class="story-bg h-screen max-w-screen container relative">
         <h2 class="text-white py-10 text-sm">Story / Promise</h2>
-        <div class="flex justify-center mt-10 px-52">
+        <div class="flex justify-center mt-10 max-w-screen-lg mx-auto">
           <div class="text-left text-white w-6/12 pr-52 mt-20 mb:mt-0 leading-8 text-sm font-bold">
             <h3 class="text-3xl font-black">おいしさとキレイの<br>両立を目指して</h3>
             <p class=" mt-5">「おやつを我慢したくない」をきっかけにスタートしたFruOats(フルオーツ)の開発。ヘルシーと美味しさを両立させるために、通常使用される素材を使わずに、何十回もの試行錯誤を重ねました。</p>
@@ -123,6 +123,47 @@
         <div class="absolute w-full -bottom-6">
           <p class="text-white story-text">Story. Promise. Story. Promise. Story. Promise. Story. Promise. Story. Promise. Story. Promise.</p>
         </div>
+      </div>
+    </section>
+    <section class="product max-w-screen-lg mx-auto py-20">
+      <h2 class="text-white py-10 text-sm">Product</h2>
+      <div class="container flex items-center justify-center">
+        <div class="w-5/12 m-10 product-img relative">
+          <img src="@/assets/image/products/main/static.index__product-deco_2.jpg" alt="" class="rounded-md">
+        </div>
+        <div class="w-7/12 text-white text-left font-bold flex flex-col justify-content items-center">
+        <div>
+          <p>オートミール × おからの<br>グルテンフリークッキー</p>
+          <h3 class="text-5xl mt-2 font-normal flex items-center">FruOats<span class="ml-2 font-bold place-self-center text-base">フルオーツ</span></h3>
+          <p class="mt-10 text-2xl">
+            ¥2,960
+            <span class="font-normal text-xs text-gray-200">税込</span>
+            <span class="text-base ml-5">30枚入り</span>
+          </p>
+          <button class="bg-white text-sm text-red-400 px-20 py-4 rounded-full mt-10">商品詳細をみる</button>
+        </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="items">
+      <div class="max-w-screen-lg mx-auto py-20">
+        <ul class="grid grid-cols-4 gap-3">
+          <li>
+            <a href="#">
+              <div>
+                <img src="@/assets/image/items/1_fa5fe15e-75d8-45e0-8156-29ea083372e9.webp" alt="">
+              </div>
+              <div class="text-white font-bold text-start">
+                <h5>[定期購買] 燕麥餅乾“FruOats” 5 種套裝 30 件</h5>
+                <p class="text-xl">
+                  ¥2,664
+                  <span class="font-normal text-xs text-gray-200">税込</span>
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
   </div>
@@ -169,6 +210,31 @@
     background: url('@/assets/image/story/static.index__story-eyecatch-bg.jpg');
     background-size: cover;
     background-position: center;
+  }
+  .product-img-style{
+    content: '';
+    border-radius: 0.375rem;
+    position: absolute;
+    display: block;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url('@/assets/image/products/main/static.index__product-deco_1.jpg');
+    background-size: cover;
+  }
+  .product-img{
+    transform: rotate(-20deg);
+  }
+  .product-img::before{
+    @extend .product-img-style;
+    transform: rotate(40deg);
+  }
+  .product-img::after{
+    @extend .product-img-style;
+    transform: rotate(20deg);
+    background: url('@/assets/image/products/main/static.index__product.jpg');
+    background-size: cover;
   }
 </style>
 
