@@ -63,14 +63,14 @@
       </div>
     </div>
     <!-- 以下的圖片 要做簡易的視差滾動 -->
-    <div class="de-banner relative mb-20">
+    <section class="de-banner relative pb-20">
       <div class="de-banner-bg w-srceen h-screen mt-20">
       </div>
-      <div class="absolute w-full -bottom-5 de-banner-text z-10" >
-        <p class="text-white">Strawberry. Pistachio. Mango. Coconut. Apple. Cinnamon. Fig. Almond. Orange. Chocolate.</p>
+      <div class="absolute w-full -bottom-5 z-10" >
+        <p class="text-white de-banner-text">Strawberry. Pistachio. Mango. Coconut. Apple. Cinnamon. Fig. Almond. Orange. Chocolate.</p>
       </div>
-    </div>
-    <div class="featrue">
+    </section>
+    <section class="featrue pb-20">
       <h2 class="text-white py-10 text-sm">FruOats' s Feature</h2>
       <ul class="flex flex-wrap justify-center">
         <li class="w-3/12 bg-white rounded-md mx-1">
@@ -106,9 +106,26 @@
           </div>
         </li>
       </ul>
-    </div>
+    </section>
+    <section class="story">
+      <div class="story-bg h-screen max-w-screen container relative">
+        <h2 class="text-white py-10 text-sm">Story / Promise</h2>
+        <div class="flex justify-center mt-10 px-52">
+          <div class="text-left text-white w-6/12 pr-52 mt-20 mb:mt-0 leading-8 text-sm font-bold">
+            <h3 class="text-3xl font-black">おいしさとキレイの<br>両立を目指して</h3>
+            <p class=" mt-5">「おやつを我慢したくない」をきっかけにスタートしたFruOats(フルオーツ)の開発。ヘルシーと美味しさを両立させるために、通常使用される素材を使わずに、何十回もの試行錯誤を重ねました。</p>
+            <button class="rounded-full px-14 py-2 mt-5 bg-white border text-red-400 ">誕生ストーリーをみる</button>
+          </div>
+          <div class="w-6/12 z-10">
+            <img src="@/assets/image/story/static.index__story-eyecatch.jpg" alt="" class="rounded-md">
+          </div>
+        </div>
+        <div class="absolute w-full -bottom-6">
+          <p class="text-white story-text">Story. Promise. Story. Promise. Story. Promise. Story. Promise. Story. Promise. Story. Promise.</p>
+        </div>
+      </div>
+    </section>
   </div>
-  <div class="h-screen w-screen bg-gray-400"></div>
 </template>
 
 <style lang="scss">
@@ -139,11 +156,19 @@
     background-position: center center;
     background-size:120%;
   }
-  .de-banner-text > p{
+  .de-banner-text{
     font-size:110px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: clip;
+  }
+  .story-text {
+    @extend .de-banner-text;
+  }
+  .story-bg{
+    background: url('@/assets/image/story/static.index__story-eyecatch-bg.jpg');
+    background-size: cover;
+    background-position: center;
   }
 </style>
 
