@@ -8,7 +8,9 @@
         <li class="mr-4">
           <router-link to="/story">商業故事</router-link>
         </li>
-        <li class="mr-4">商品一覽</li>
+        <li class="mr-4">
+          <router-link to="/products">商品一覽</router-link>
+        </li>
         <li class="mr-4">最新消息</li>
         <li class="mr-4">聯絡我們</li>
     </ul>

@@ -8,7 +8,7 @@
         <li>プライバシーポリシー</li>
         <li>特定商取引法に基づく表記</li>
       </ul>
-      <div class="mt-5 opacity-60 flex items-center ">
+      <div class="my-10 opacity-60 flex items-center ">
         <img src="@/assets/image/footer/static.shared__logo_wh.svg" style="width:100px;" alt="">
         <p class="text-xs text-white ml-5">@2022 所有內容皆為練習使用，將不用於商業創作</p>
       </div>
