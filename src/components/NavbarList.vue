@@ -1,11 +1,12 @@
 <template>
-  <div class="flex justify-between items-center p-10 bg-gray-400 text-white font-bold">
+<div class="fixed bg-gray-400 z-50 w-screen">
+  <div class="flex justify-between items-center p-10 text-white font-bold">
     <ul class="flex">
         <li class="mr-4">
           <router-link to="/">Top</router-link>
         </li>
         <li class="mr-4">
-          <router-link to="/about">商業故事</router-link>
+          <router-link to="/story">商業故事</router-link>
         </li>
         <li class="mr-4">商品一覽</li>
         <li class="mr-4">最新消息</li>
@@ -23,4 +24,6 @@
       </div>
     </div>
   </div>
+</div>
+
 </template>
