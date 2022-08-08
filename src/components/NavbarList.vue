@@ -14,7 +14,9 @@
         <li class="mr-4">
           <router-link to="/news">最新消息</router-link>
         </li>
-        <li class="mr-4">聯絡我們</li>
+        <li class="mr-4">
+          <router-link to="/contact">聯絡我們</router-link>
+        </li>
     </ul>
     <div class="absolute left-1/2 -translate-x-1/2">
       <router-link to="/">
