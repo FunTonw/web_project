@@ -11,7 +11,9 @@
         <li class="mr-4">
           <router-link to="/products">商品一覽</router-link>
         </li>
-        <li class="mr-4">最新消息</li>
+        <li class="mr-4">
+          <router-link to="/news">最新消息</router-link>
+        </li>
         <li class="mr-4">聯絡我們</li>
     </ul>
     <div class="absolute left-1/2 -translate-x-1/2">
