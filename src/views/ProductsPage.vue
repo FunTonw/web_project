@@ -5,7 +5,7 @@
     </div>
     <div class="mt-56">
       <h2 class="text-white fond-bold text-5xl">P R O D U C T S</h2>
-      <div class="max-w-screen-lg mx-auto py-20">
+      <div class="max-w-screen-lg mx-auto py-20 animate-animate-bottomToTop_1s">
         <ul class="grid grid-cols-4 gap-x-3 gap-y-20">
           <li>
             <a href="#">

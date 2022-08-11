@@ -8,7 +8,7 @@
       <div class="story_page-bg  max-w-screen "></div>
       <h2 class="absolute top-1/2 text-white right-1/2 translate-x-1/2 text-5xl">S T O R Y</h2>
     </div>
-      <div class="bg-white w-9/12 py-20 px-3 rounded-md mx-auto -mt-52 relative z-20">
+      <div class="bg-white w-9/12 py-20 px-3 rounded-md mx-auto -mt-52 relative z-20  ">
         <div class="flex flex-col items-center">
           <h3 class="text-red-600 text-3xl font-bold">おやつを我慢したくない<br>をきっかけに</h3>
           <p class="text-start mt-10 font-bold">
@@ -23,10 +23,10 @@
           </p>
         </div>
         <div class="grid grid-cols-2 gap-x-10 gap-y-20 w-10/12 mx-auto mt-40">
-          <div>
+          <div class="animate-bottomToTop_1s">
             <img src="@/assets/image/story_page/static.story__contents_1.webp" alt="" class="rounded-md">
           </div>
-          <div class="font-bold">
+          <div class="font-bold animate-bottomToTop_1s">
             <h3 class="text-start text-3xl text-red-600 mb-10 mt-5">注目したのは食物繊維</h3>
             <p class="text-start">
             アンケート調査結果から、意外にもたんぱく質やビタミンよりも「食物繊維」を意識して摂取している人が多いということがわかりました。<br>
@@ -41,7 +41,7 @@
             私たちは、かんたんに誰でも食物繊維をプラスできるおやつの検討を重ね、たった3枚のクッキーで1/2日分の食物繊維を摂取できる「FruOats（フルオーツ）」が誕生しました。
             </p>
           </div>
-          <div class="font-bold text-start">
+          <div class="font-bold text-start animate-bottomToTop_1s">
             <h3 class="text-red-600 text-3xl mb-10 mt-5">植物由来のシンプルな<br>素材だけで実現</h3>
             <p>すべての人が楽しいおやつ時間を過ごせるよう､植物由来のシンプルな素材だけで美味しさを実現させました。
             <br>
@@ -49,18 +49,18 @@
             ヴィーガンやグルテンアレルギーの方にも食べていただけるよう、クッキーの原材料でよく使われる、小麦粉、卵やバターなどの動物性素材は使用していません。
             また、人工甘味料や保存料なども一切使用していません。</p>
           </div>
-          <div>
+          <div class="animate-bottomToTop_1s">
             <img src="@/assets/image/story_page/static.story__contents_2.jpg" alt="" class="rounded-md">
           </div>
-          <div class="col-span-2">
+          <div class="col-span-2 animate-bottomToTop_1s">
             <div class="font-bold text-start">
               <h3 class="text-red-600 text-3xl mb-10">ヘルシーと美味しさを両立させるために</h3>
               <p>ヘルシーと美味しさを両立させるために食物繊維をたっぷり配合し、通常使用される素材を使わずに美味しく作ることは至難のわざです。世界大会優勝経験のあるシェフに監修をいただき、何十回もの試作を経て、「FruOats(フルオーツ)」が完成したのです。</p>
             </div>
-            <div class="mt-20">
+            <div class="mt-20 animate-bottomToTop_1s">
               <img src="@/assets/image/story_page/static.story__chef.webp" alt="">
             </div>
-            <div class="font-bold text-xl leading-10 mt-10">
+            <div class="font-bold text-xl leading-10 mt-10 animate-bottomToTop_1s">
               <p>監修</p>
               <p class="text-3xl">中山 和大</p>
               <p>シェフ</p>
@@ -126,7 +126,7 @@
               </ul>
             </div>
           </div>
-          <div  class="col-span-2">
+          <div  class="col-span-2 animate-bottomToTop_1s">
             <div>
               <img src="@/assets/image/story_page/pixta_48253132_M.webp" alt="">
             </div>
