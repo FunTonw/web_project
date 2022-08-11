@@ -68,7 +68,7 @@
     <div class="overflow-hidden my-20">
     <section class="de-banner overflow-hidden">
       <div class="de-banner-bg h-screen w-full flex items-end"
-      :style="{transform: `translate3d(0px, ${styleDate}px, 0px)`}" ref="deBanner">
+      :style="{transform: `translate3d(0px, ${deBannerDate}px, 0px)`}" ref="deBanner">
       </div>
     </section>
     <div class="-translate-y-36">
@@ -79,7 +79,7 @@
     <section class="featrue pb-20" ref="featrue">
       <h2 class="text-white py-10 text-sm">FruOats' s Feature</h2>
       <ul class="grid grid-cols-3 gap-3 max-w-screen-lg mx-auto">
-        <li class=" bg-white rounded-md animate-smooth1">
+        <li class=" bg-white rounded-md">
         <div class="relative">
             <p class="absolute text-white -top-12 left-5" style="font-size: 86px">1</p>
             <img src="../assets/image/feature/static.index__feature_1.jpg" alt="" class="rounded-t-md">
@@ -89,7 +89,7 @@
             <p class="text-sm mt-5 text-left font-semibold">お菓子の材料によく使われる卵やバター、小麦粉、白砂糖は使用せず、オートミール、おからパウダー、チアシード、アマニ、ドライフルーツ、米油など、原材料は全て植物由来の素材を使用しています。また、人工甘味料や保存料も使用せず、からだにやさしいクッキーに仕上げました。</p>
           </div>
         </li>
-        <li class=" bg-white rounded-md animate-smooth2">
+        <li class=" bg-white rounded-md">
         <div class="relative">
             <p class="absolute text-white -top-12 left-5" style="font-size: 86px">2</p>
             <img src="../assets/image/feature/static.index__feature_2.jpg" alt="" class="rounded-t-md">
@@ -99,7 +99,7 @@
             <p class="text-sm mt-5 text-left font-semibold">通常のクッキーと比べて栄養価は一目瞭然！低糖質で食物繊維がたっぷり。ほとんどの日本人が食物繊維不足で、20代~30代の男女で平均約6g不足しています。フルオーツならたった3枚(45g)で、1日に必要な食物繊維の1/2が摂れます。これは、バナナ約9~10本相当分です。</p>
           </div>
         </li>
-        <li class=" bg-white rounded-md animate-smooth3">
+        <li class=" bg-white rounded-md">
         <div class="relative">
             <p class="absolute text-white -top-12 left-5" style="font-size: 86px">3</p>
             <img src="../assets/image/feature/static.index__feature_3.jpg" alt="" class="rounded-t-md">
@@ -361,7 +361,8 @@ export default {
   },
   data () {
     return {
-      styleDate: 36
+      deBannerDate: 36,
+      featrueOffOn: false
     }
   },
   methods: {
@@ -379,12 +380,15 @@ export default {
 
       // 假如滾動高度 等於大於 網頁到物件頂的高度 並且 滾動高度 等於小於 網頁到物件底的高度  background position 位移 Y +
       if (windowHeight >= webTodeBannerTop && windowHeight <= webTodeBannerBottom) {
-        // console.log(windowHeight, deBannerHelf)
-        this.styleDate = -(windowHeight - deBannerHelf) / 60
-      } else if (windowHeight >= webToFeatrueTop) {
-        console.log('ok')
+        // deBanner 的視差距離
+        this.deBannerDate = -(windowHeight - deBannerHelf) / 60
+      } else if (windowHeight >= webToFeatrueTop && !this.featrueOffOn) {
+        // feature 的動畫時機
+        this.featrueOffOn = true
+        for (let i = 0; i <= featrue.childElementCount; i++) {
+          featrue.children[1].children[i].classList.add('animate-smooth' + (i + 1))
+        }
       }
-      console.log(windowHeight, webToFeatrueTop)
     }
   },
   mounted () {
