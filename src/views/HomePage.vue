@@ -65,16 +65,16 @@
       </div>
     </div>
 
-    <div class="overflow-hidden my-20">
-    <section class="de-banner overflow-hidden">
+    <section class="overflow-hidden my-20">
+    <div class="de-banner overflow-hidden">
       <div class="de-banner-bg h-screen w-full flex items-end"
       :style="{transform: `translate3d(0px, ${deBannerDate}px, 0px)`}" ref="deBanner">
       </div>
-    </section>
+    </div>
     <div class="-translate-y-36">
       <p class="text-white de-banner-text whitespace-nowrap animate-leftToRight_infinite" >Strawberry. Pistachio. Mango. Coconut. Apple. Cinnamon. Fig. Almond. Orange. Chocolate.</p>
     </div>
-    </div>
+    </section>
 
     <section class="featrue pb-20" ref="featrue">
       <h2 class="text-white py-10 text-sm">FruOats' s Feature</h2>
@@ -244,21 +244,23 @@
       </div>
     </section>
 
-    <section class="contact py-20">
-        <div class="contact-bg w-9/12 h-screen relative">
-          <div class="absolute translate-y-1/3 -right-48 bg-white p-10 animate-bottomToTop_contact" style="width:400px">
-            <h3 class="text-sm text-red-400">Shop</h3>
-            <h4 class="text-2xl text-red-400 text-start mt-10 font-bold">FruOats FACTORY</h4>
-            <div class="mt-10 text-start leading-7 text-sm">
-            <p>2022年4月25日(月)よりグランドオープン</p>
-            <p class="font-bold">営業時間</p>
-            <p>月~金（祝日除く） 11:00~17:00</p>
-            <p class="font-bold">店舗所在地</p>
-            <p>東京都江東区扇橋1丁目12-20</p>
-            </div>
-            <button class="mt-10 bg-red-600 text-white px-14 py-3 rounded-full font-bold">もっと詳しく</button>
-          </div>
+    <section class="contact py-20 ">
+      <div class="relative overflow-hidden"  ref="contact">
+        <div class="contact-bg w-9/12 h-screen relative" :style="{transform: `translate3d(0px, ${contactDate}px, 0px)`}">
         </div>
+        <div class="absolute top-20 right-52  bg-white p-10" style="width:400px">
+          <h3 class="text-sm text-red-400">Shop</h3>
+          <h4 class="text-2xl text-red-400 text-start mt-10 font-bold">FruOats FACTORY</h4>
+          <div class="mt-10 text-start leading-7 text-sm">
+          <p>2022年4月25日(月)よりグランドオープン</p>
+          <p class="font-bold">営業時間</p>
+          <p>月~金（祝日除く） 11:00~17:00</p>
+          <p class="font-bold">店舗所在地</p>
+          <p>東京都江東区扇橋1丁目12-20</p>
+          </div>
+          <button class="mt-10 bg-red-600 text-white px-14 py-3 rounded-full font-bold">もっと詳しく</button>
+        </div>
+      </div>
     </section>
     <FooterList />
   </div>
@@ -337,8 +339,10 @@
   }
   .contact-bg{
     background: url('@/assets/image/contact/static.index__shop-eyecatch.webp');
-    background-size: fixed;
-    background-position: center;
+    background-size: cover;
+    scale: 1.15;
+    transition: 1.1s linear;
+    background-position: center center;
   }
   // @keyframes rotate_left {
   //   from { transform: rotate(0deg) translateY(-20%) }
@@ -365,7 +369,8 @@ export default {
       featrueOffOn: false,
       storyOffOn: false,
       productOffOn: false,
-      itemsOffOn: false
+      itemsOffOn: false,
+      contactDate: 36
     }
   },
   methods: {
@@ -396,16 +401,21 @@ export default {
       const items = this.$refs.items
       const webToItemsTop = parseInt(items.offsetTop)
 
+      const contact = this.$refs.contact
+      const contactHeight = parseInt(contact.clientHeight) // 物件高度
+      const webTocontactTop = parseInt(contact.offsetTop) // 網頁 到 物件頂 的高度
+      const webTocontactBottom = parseInt(contact.offsetTop) + contactHeight // 網頁 到 物件底 的高度
+      const contactHelf = webTocontactTop + (parseInt(contact.clientHeight) / 2) //  網頁 到 物件中間 的高度
+
       // 假如滾動高度 等於大於 網頁到物件頂的高度 並且 滾動高度 等於小於 網頁到物件底的高度  background position 位移 Y +
-      if (windowHeight >= webTodeBannerTop && windowHeight <= webTodeBannerBottom) {
+      if (windowHeight >= webTodeBannerTop && windowHeight <= webTodeBannerBottom + 100) {
         // deBanner 的視差距離
-        this.deBannerDate = -(windowHeight - deBannerHelf) / 60
+        this.deBannerDate = -(windowHeight - deBannerHelf) / 70
       } else if (windowHeight >= webToFeatrueTop && !this.featrueOffOn) {
         // feature 的動畫時機
         this.featrueOffOn = true
         for (let i = 0; i <= featrue.childElementCount; i++) {
           featrue.children[1].children[i].classList.add('animate-smooth' + (i + 1))
-          console.log(featrue.children[1].children[i])
         }
       } else if (windowHeight >= webToStoryTop && !this.storyOffOn) {
         // story 的動畫時機
@@ -420,6 +430,9 @@ export default {
       } else if (windowHeight >= webToItemsTop && !this.itemsOffOn) {
         this.itemsOffOn = true
         items.classList.add('animate-smooth1')
+      } else if (windowHeight >= webTocontactTop && windowHeight <= webTocontactBottom + 100) {
+        this.contactDate = -(windowHeight - contactHelf) / 10
+        contact.classList.add('animate-smooth1')
       }
     }
   },
