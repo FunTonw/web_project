@@ -76,7 +76,7 @@ module.exports = {
         bottomToTop_1s: 'bottomToTop 1s linear 1',
         bottomToTop_contact: 'bottomToTop_contact 1.2s linear 1',
         smooth1: 'smooth 1.3s linear 1',
-        smooth2: 'smooth 1.3s linear 1',
+        smooth2: 'smooth 1.5s linear 1',
         smooth3: 'smooth 1.7s linear 1',
         smooth_story: 'smooth_story 1.7s linear 1',
         leftToRight_infinite: 'leftToRight 60s linear infinite',

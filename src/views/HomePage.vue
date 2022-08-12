@@ -157,7 +157,7 @@
 
     <section class="items" ref="items">
       <div class="max-w-screen-lg mx-auto py-20">
-        <ul class="grid grid-cols-4 gap-3 animate-bottomToTop">
+        <ul class="grid grid-cols-4 gap-3">
           <li>
             <a href="#">
               <div >
@@ -417,6 +417,9 @@ export default {
         product.children[1].classList.add('animate-smooth3')
         productImg.classList.add('before:animate-rotate_left')
         productImg.classList.add('after:animate-rotate_right')
+      } else if (windowHeight >= webToItemsTop && !this.itemsOffOn) {
+        this.itemsOffOn = true
+        items.classList.add('animate-smooth1')
       }
     }
   },
