@@ -133,10 +133,10 @@
       </div>
     </section>
 
-    <section class="product max-w-screen-lg mx-auto py-20 animate-bottomToTop_1s">
+    <section class="product max-w-screen-lg mx-auto py-20" ref="product">
       <h2 class="text-white py-10 text-sm">Product</h2>
       <div class="container flex items-center justify-center">
-        <div class="w-5/12 m-10 product-img relative ">
+        <div class="w-5/12 m-10 product-img relative" ref="product_img">
           <img src="@/assets/image/products/main/static.index__product.jpg" alt="" class="rounded-md z-10 relative">
         </div>
         <div class="w-7/12 text-white text-left font-bold flex flex-col justify-content items-center">
@@ -155,7 +155,7 @@
       </div>
     </section>
 
-    <section class="items">
+    <section class="items" ref="items">
       <div class="max-w-screen-lg mx-auto py-20">
         <ul class="grid grid-cols-4 gap-3 animate-bottomToTop">
           <li>
@@ -325,7 +325,7 @@
     transform: rotate(20deg) translateY(-20%);
     @extend .product-img-style;
     z-index: 1;
-    animation: rotate_left 1s linear 1 ;
+    // animation: rotate_left 1s linear 1 ;
   }
   .product-img::after{
     transform: rotate(-20deg) translateY(-20%);
@@ -333,21 +333,21 @@
     background: url('@/assets/image/products/main/static.index__product-deco_2.jpg');
     background-size: cover;
     z-index: 1;
-    animation: rotate_right 1s linear 1 ;
+    // animation: rotate_right 1s linear 1 ;
   }
   .contact-bg{
     background: url('@/assets/image/contact/static.index__shop-eyecatch.webp');
     background-size: fixed;
     background-position: center;
   }
-  @keyframes rotate_left {
-    from { transform: rotate(0deg) translateY(-20%) }
-    to { transform: rotate(20deg) translateY(-20%) }
-  }
-  @keyframes rotate_right {
-    from { transform: rotate(0deg) translateY(-20%) }
-    to { transform: rotate(-20deg) translateY(-20%) }
-  }
+  // @keyframes rotate_left {
+  //   from { transform: rotate(0deg) translateY(-20%) }
+  //   to { transform: rotate(20deg) translateY(-20%) }
+  // }
+  // @keyframes rotate_right {
+  //   from { transform: rotate(0deg) translateY(-20%) }
+  //   to { transform: rotate(-20deg) translateY(-20%) }
+  // }
 </style>
 
 <script>
@@ -363,7 +363,9 @@ export default {
     return {
       deBannerDate: 36,
       featrueOffOn: false,
-      storyOffOn: false
+      storyOffOn: false,
+      productOffOn: false,
+      itemsOffOn: false
     }
   },
   methods: {
@@ -385,6 +387,15 @@ export default {
       const story = this.$refs.story
       const webToStoryTop = parseInt(story.offsetTop)
 
+      // product
+      const product = this.$refs.product
+      const webToProductTop = parseInt(product.offsetTop)
+      const productImg = this.$refs.product_img
+
+      // items
+      const items = this.$refs.items
+      const webToItemsTop = parseInt(items.offsetTop)
+
       // 假如滾動高度 等於大於 網頁到物件頂的高度 並且 滾動高度 等於小於 網頁到物件底的高度  background position 位移 Y +
       if (windowHeight >= webTodeBannerTop && windowHeight <= webTodeBannerBottom) {
         // deBanner 的視差距離
@@ -397,7 +408,15 @@ export default {
           console.log(featrue.children[1].children[i])
         }
       } else if (windowHeight >= webToStoryTop && !this.storyOffOn) {
+        // story 的動畫時機
+        this.storyOffOn = true
         story.children[1].classList.add('animate-smooth_story')
+      } else if (windowHeight >= webToProductTop && !this.productOffOn) {
+        // product 動畫時機
+        this.productOffOn = true
+        product.children[1].classList.add('animate-smooth3')
+        productImg.classList.add('before:animate-rotate_left')
+        productImg.classList.add('after:animate-rotate_right')
       }
     }
   },

@@ -56,6 +56,14 @@ module.exports = {
           '0%': { transform: 'translateY(50px) translateX(50%)', opacity: '0' },
           '70%': { transform: 'translateY(-10px) translateX(50%)' },
           '100%': { transform: 'translateY(0px) translateX(50%)', opacity: '1' }
+        },
+        rotate_right: {
+          from: { transform: 'rotate(0deg) translateY(-20%)' },
+          to: { transform: 'rotate(-20deg) translateY(-20%)' }
+        },
+        rotate_left: {
+          from: { transform: 'rotate(0deg) translateY(-20%)' },
+          to: { transform: 'rotate(20deg) translateY(-20%)' }
         }
       },
       animation: {
@@ -73,7 +81,9 @@ module.exports = {
         smooth_story: 'smooth_story 1.7s linear 1',
         leftToRight_infinite: 'leftToRight 60s linear infinite',
         leftToRight_button: 'leftToRight_button 2s linear 1',
-        scroll: 'scroll 20s linear infinite'
+        scroll: 'scroll 20s linear infinite',
+        rotate_right: 'rotate_right 1s linear 1',
+        rotate_left: 'rotate_left 1s linear 1'
       }
     }
   },
