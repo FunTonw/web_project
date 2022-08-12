@@ -4,11 +4,11 @@
         <NavbarList />
     </div>
     <div class="bg-gray-400">
-    <div class="story_page max-w-screen h-screen relative z-10 ">
+    <div class="story_page max-w-screen h-screen relative z-10 animate-topToBottom">
       <div class="story_page-bg  max-w-screen "></div>
       <h2 class="absolute top-1/2 text-white right-1/2 translate-x-1/2 text-5xl">S T O R Y</h2>
     </div>
-      <div class="bg-white w-9/12 py-20 px-3 rounded-md mx-auto -mt-52 relative z-20  ">
+      <div class="bg-white w-9/12 py-20 px-3 rounded-md mx-auto -mt-52 relative z-20 ">
         <div class="flex flex-col items-center">
           <h3 class="text-red-600 text-3xl font-bold">おやつを我慢したくない<br>をきっかけに</h3>
           <p class="text-start mt-10 font-bold">
@@ -23,11 +23,11 @@
           </p>
         </div>
         <div class="grid grid-cols-2 gap-x-10 gap-y-20 w-10/12 mx-auto mt-40">
-          <div class="animate-bottomToTop_1s">
+          <div ref="contact1">
             <img src="@/assets/image/story_page/static.story__contents_1.webp" alt="" class="rounded-md">
           </div>
-          <div class="font-bold animate-bottomToTop_1s">
-            <h3 class="text-start text-3xl text-red-600 mb-10 mt-5">注目したのは食物繊維</h3>
+          <div class="font-bold" ref="contact2">
+            <h3 class="text-start text-3xl text-red-600 mb-10 mt-5"  ref="contact2">注目したのは食物繊維</h3>
             <p class="text-start">
             アンケート調査結果から、意外にもたんぱく質やビタミンよりも「食物繊維」を意識して摂取している人が多いということがわかりました。<br>
             <br>
@@ -41,7 +41,7 @@
             私たちは、かんたんに誰でも食物繊維をプラスできるおやつの検討を重ね、たった3枚のクッキーで1/2日分の食物繊維を摂取できる「FruOats（フルオーツ）」が誕生しました。
             </p>
           </div>
-          <div class="font-bold text-start animate-bottomToTop_1s">
+          <div class="font-bold text-start" ref="contact3">
             <h3 class="text-red-600 text-3xl mb-10 mt-5">植物由来のシンプルな<br>素材だけで実現</h3>
             <p>すべての人が楽しいおやつ時間を過ごせるよう､植物由来のシンプルな素材だけで美味しさを実現させました。
             <br>
@@ -49,10 +49,10 @@
             ヴィーガンやグルテンアレルギーの方にも食べていただけるよう、クッキーの原材料でよく使われる、小麦粉、卵やバターなどの動物性素材は使用していません。
             また、人工甘味料や保存料なども一切使用していません。</p>
           </div>
-          <div class="animate-bottomToTop_1s">
+          <div ref="contact4">
             <img src="@/assets/image/story_page/static.story__contents_2.jpg" alt="" class="rounded-md">
           </div>
-          <div class="col-span-2 animate-bottomToTop_1s">
+          <div class="col-span-2" ref="contact5">
             <div class="font-bold text-start">
               <h3 class="text-red-600 text-3xl mb-10">ヘルシーと美味しさを両立させるために</h3>
               <p>ヘルシーと美味しさを両立させるために食物繊維をたっぷり配合し、通常使用される素材を使わずに美味しく作ることは至難のわざです。世界大会優勝経験のあるシェフに監修をいただき、何十回もの試作を経て、「FruOats(フルオーツ)」が完成したのです。</p>
@@ -126,7 +126,7 @@
               </ul>
             </div>
           </div>
-          <div  class="col-span-2 animate-bottomToTop_1s">
+          <div  class="col-span-2" ref="contact6">
             <div>
               <img src="@/assets/image/story_page/pixta_48253132_M.webp" alt="">
             </div>
@@ -202,6 +202,48 @@ export default {
   components: {
     NavbarList,
     FooterList
+  },
+  data () {
+    return {
+      contact1OffOn: false,
+      contact2OffOn: false,
+      contact3OffOn: false,
+      contact4OffOn: false,
+      contact5OffOn: false,
+      contact6OffOn: false
+    }
+  },
+  methods: {
+    storyLisener: function () {
+      const windowHeight = parseInt(window.screen.height) + parseInt(window.scrollY) // 滾動的高度
+      const contact1 = this.contactNumber(this.$refs.contact1)
+      // const contact2 = this.contactNumber(this.$refs.contact2)
+      const contact3 = this.contactNumber(this.$refs.contact3)
+      // const contact4 = this.contactNumber(this.$refs.contact4)
+      const contact5 = this.contactNumber(this.$refs.contact5)
+      const contact6 = this.contactNumber(this.$refs.contact6)
+      if (windowHeight >= contact1 && !this.contact1OffOn) {
+        this.contact1OffOn = true
+        this.$refs.contact1.classList.add('animate-bottomToTop')
+        this.$refs.contact2.classList.add('animate-bottomToTop')
+      } else if (windowHeight >= contact3 && !this.contact3OffOn) {
+        this.contact3OffOn = true
+        this.$refs.contact3.classList.add('animate-bottomToTop')
+        this.$refs.contact4.classList.add('animate-bottomToTop')
+      } else if (windowHeight >= contact5 && !this.contact5OffOn) {
+        this.contact5OffOn = true
+        this.$refs.contact5.classList.add('animate-bottomToTop')
+      } else if (windowHeight >= contact6 && !this.contact6OffOn) {
+        this.contac63OffOn = true
+        this.$refs.contact6.classList.add('animate-bottomToTop')
+      }
+    },
+    contactNumber: function (x) {
+      return parseInt(x.offsetTop) + 600
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.storyLisener)
   }
 }
 </script>

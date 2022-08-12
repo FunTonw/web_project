@@ -33,7 +33,7 @@
       </div>
     </header>
     <div class="about container mx-auto z-20">
-      <div class="about-bg w-full h-screen relative  animate-bottomToTop">
+      <div class="about-bg w-full h-screen relative">
         <h2 class="text-red-400 pt-10 text-sm">About FruOats</h2>
         <div class="
         bg-white
@@ -232,7 +232,7 @@
           </li>
         </ul>
         <div class="mt-10 flex justify-end  ">
-          <a href="#" class="group animate-leftToRight_button flex items-center">
+          <a href="#" class="group flex items-center" ref="itemsButton">
           <p class="text-end text-white mr-3 ">
             Products All
           </p>
@@ -400,6 +400,7 @@ export default {
       // items
       const items = this.$refs.items
       const webToItemsTop = parseInt(items.offsetTop)
+      const itemsButton = this.$refs.itemsButton
 
       const contact = this.$refs.contact
       const contactHeight = parseInt(contact.clientHeight) // 物件高度
@@ -429,6 +430,7 @@ export default {
         productImg.classList.add('after:animate-rotate_right')
       } else if (windowHeight >= webToItemsTop && !this.itemsOffOn) {
         this.itemsOffOn = true
+        itemsButton.classList.add('animate-leftToRight_button')
         items.classList.add('animate-smooth1')
       } else if (windowHeight >= webTocontactTop && windowHeight <= webTocontactBottom + 100) {
         this.contactDate = -(windowHeight - contactHelf) / 10

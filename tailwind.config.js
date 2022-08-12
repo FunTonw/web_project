@@ -26,17 +26,14 @@ module.exports = {
           '25': { transform: 'translateY(-100px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' }
         },
+        bottomToTop: {
+          '0%': { transform: 'translateY(100px)', opacity: '0' },
+          '25': { transform: 'translateY(100px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' }
+        },
         scroll: {
           from: { transform: 'rotate(360deg)' },
           to: { transform: 'rotate(0deg)' }
-        },
-        bottomToTop: {
-          '0%': { transform: 'translateY(50px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' }
-        },
-        bottomToTop_contact: {
-          '0%': { transform: 'translateY(50px)', opacity: '0' },
-          '100%': { transform: 'translateY(33.3%)', opacity: '1' }
         },
         leftToRight: {
           from: { transform: 'translateX(0)' },
@@ -71,10 +68,8 @@ module.exports = {
         fadeIn_late: 'fadeIn_late 2s linear 1',
         fadeIn_3: 'fadeIn 0.3s linear 1',
         fadeIn_5: 'fadeIn 1s linear 1',
-        topToBottom: 'topToBottom 2s linear 1',
-        bottomToTop: 'bottomToTop 2s linear 1',
-        bottomToTop_1s: 'bottomToTop 1s linear 1',
-        bottomToTop_contact: 'bottomToTop_contact 1.2s linear 1',
+        topToBottom: 'topToBottom 1s linear 1',
+        bottomToTop: 'bottomToTop 1s linear 1',
         smooth1: 'smooth 1.3s linear 1',
         smooth2: 'smooth 1.5s linear 1',
         smooth3: 'smooth 1.7s linear 1',
