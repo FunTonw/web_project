@@ -51,6 +51,11 @@ module.exports = {
           '0%': { transform: 'translateY(50px)', opacity: '0' },
           '70%': { transform: 'translateY(-10px)' },
           '100%': { transform: 'translateY(0px)', opacity: '1' }
+        },
+        smooth_story: {
+          '0%': { transform: 'translateY(50px) translateX(50%)', opacity: '0' },
+          '70%': { transform: 'translateY(-10px) translateX(50%)' },
+          '100%': { transform: 'translateY(0px) translateX(50%)', opacity: '1' }
         }
       },
       animation: {
@@ -62,9 +67,10 @@ module.exports = {
         bottomToTop: 'bottomToTop 2s linear 1',
         bottomToTop_1s: 'bottomToTop 1s linear 1',
         bottomToTop_contact: 'bottomToTop_contact 1.2s linear 1',
-        smooth1: 'smooth .9s linear 1',
-        smooth2: 'smooth 1.1s linear 1',
-        smooth3: 'smooth 1.3s linear 1',
+        smooth1: 'smooth 1.3s linear 1',
+        smooth2: 'smooth 1.3s linear 1',
+        smooth3: 'smooth 1.7s linear 1',
+        smooth_story: 'smooth_story 1.7s linear 1',
         leftToRight_infinite: 'leftToRight 60s linear infinite',
         leftToRight_button: 'leftToRight_button 2s linear 1',
         scroll: 'scroll 20s linear infinite'

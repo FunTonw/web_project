@@ -114,7 +114,7 @@
       </ul>
     </section>
 
-    <section class="story pb-20 relative">
+    <section class="story pb-20 relative" ref="story">
       <div class="story-bg h-screen w-full  flex flex-col justify-between">
       <h2 class="text-white py-10 text-sm">Story / Promise</h2>
         <div class="overflow-hidden">
@@ -122,12 +122,12 @@
         </div>
       </div>
       <div class="absolute gap-5 grid grid-cols-2 w-8/12 right-1/2 top-1/4 translate-x-1/2">
-          <div class="text-left text-white mt-20 mb:mt-0 leading-8 text-sm font-bold animate-smooth1">
+          <div class="text-left text-white mt-20 mb:mt-0 leading-8 text-sm font-bold">
             <h3 class="text-3xl font-black">おいしさとキレイの<br>両立を目指して</h3>
             <p class=" mt-5">「おやつを我慢したくない」をきっかけにスタートしたFruOats(フルオーツ)の開発。ヘルシーと美味しさを両立させるために、通常使用される素材を使わずに、何十回もの試行錯誤を重ねました。</p>
             <button class="rounded-full px-14 py-2 mt-5 bg-white border text-red-400 hover:bg-red-400 hover:text-white ease-in duration-300">誕生ストーリーをみる</button>
           </div>
-          <div class="z-20 animate-smooth3">
+          <div class="z-20">
             <img src="@/assets/image/story/static.index__story-eyecatch.jpg" alt="" class="rounded-md">
           </div>
       </div>
@@ -362,21 +362,28 @@ export default {
   data () {
     return {
       deBannerDate: 36,
-      featrueOffOn: false
+      featrueOffOn: false,
+      storyOffOn: false
     }
   },
   methods: {
     scrollListener: function () {
       const windowHeight = parseInt(window.screen.height) + parseInt(window.scrollY) // 滾動的高度
 
+      // de-banner
       const deBanner = this.$refs.deBanner
       const deBannerHeight = parseInt(deBanner.clientHeight) // 物件高度
       const webTodeBannerTop = parseInt(deBanner.offsetTop) // 網頁 到 物件頂 的高度
       const webTodeBannerBottom = parseInt(deBanner.offsetTop) + deBannerHeight // 網頁 到 物件底 的高度
       const deBannerHelf = webTodeBannerTop + (parseInt(deBanner.clientHeight) / 2) //  網頁 到 物件中間 的高度
 
+      // feature
       const featrue = this.$refs.featrue
       const webToFeatrueTop = parseInt(featrue.offsetTop)
+
+      // story
+      const story = this.$refs.story
+      const webToStoryTop = parseInt(story.offsetTop)
 
       // 假如滾動高度 等於大於 網頁到物件頂的高度 並且 滾動高度 等於小於 網頁到物件底的高度  background position 位移 Y +
       if (windowHeight >= webTodeBannerTop && windowHeight <= webTodeBannerBottom) {
@@ -387,7 +394,10 @@ export default {
         this.featrueOffOn = true
         for (let i = 0; i <= featrue.childElementCount; i++) {
           featrue.children[1].children[i].classList.add('animate-smooth' + (i + 1))
+          console.log(featrue.children[1].children[i])
         }
+      } else if (windowHeight >= webToStoryTop && !this.storyOffOn) {
+        story.children[1].classList.add('animate-smooth_story')
       }
     }
   },
