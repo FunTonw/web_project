@@ -4,8 +4,8 @@
         <NavbarList />
     </div>
     <div class="mt-56">
-      <h2 class="text-white fond-bold text-5xl mb-20">S H O P</h2>
-      <div class="animate-bottomToTop_1s">
+      <h2 class="text-white fond-bold text-5xl mb-20 animate-topToBottom">S H O P</h2>
+      <div class=" animate-bottomToTop">
         <div class="w-7/12 mx-auto bg-white rounded-xl">
           <div><img src="@/assets/image/contact/static.index__shop-eyecatch.webp" alt="" class="rounded-t-xl"></div>
           <div class="p-20">
