@@ -147,9 +147,9 @@
           </div>
         </div>
       </div>
-      <div class="mt-40">
-        <h2 class="font-bold text-5xl text-white">P R O M I S E</h2>
-        <ul class="mt-20">
+      <div class="mt-40" ref='promise'>
+        <h2 class="font-bold text-5xl text-white" ref='promiseTitle'>P R O M I S E</h2>
+        <ul class="mt-20" ref='promiseContent'>
           <li class="bg-white flex items-center px-20 py-10 font-bold mb-1">
             <p class="text-red-600 text-4xl mr-10">1</p>
             <span class="text-xl">「おやつ」で健康をサポートします。</span>
@@ -210,22 +210,39 @@ export default {
       contact3OffOn: false,
       contact4OffOn: false,
       contact5OffOn: false,
-      contact6OffOn: false
+      contact6OffOn: false,
+      promiseOffOn: false
     }
   },
   methods: {
     storyLisener: function () {
       const windowHeight = parseInt(window.screen.height) + parseInt(window.scrollY) // 滾動的高度
+
+      // contact content
       const contact1 = this.contactNumber(this.$refs.contact1)
       // const contact2 = this.contactNumber(this.$refs.contact2)
       const contact3 = this.contactNumber(this.$refs.contact3)
       // const contact4 = this.contactNumber(this.$refs.contact4)
       const contact5 = this.contactNumber(this.$refs.contact5)
       const contact6 = this.contactNumber(this.$refs.contact6)
+
+      // promise content
+      const promise = this.$refs.promise
+      const promiseTitle = this.$refs.promiseTitle
+      const promiseContent = this.$refs.promiseContent
       if (windowHeight >= contact1 && !this.contact1OffOn) {
         this.contact1OffOn = true
         this.$refs.contact1.classList.add('animate-bottomToTop')
         this.$refs.contact2.classList.add('animate-bottomToTop')
+      } else if (windowHeight >= promise.offsetTop) {
+        // promise animate
+        promiseTitle.classList.add('animate-topToBottom')
+        for (let i = 0; i < promiseContent.childElementCount; i++) {
+          setTimeout(() => {
+            promiseContent.childNodes[i].classList.add('animate-smooth1')
+            console.log(i + 1)
+          }, i * 200)
+        }
       } else if (windowHeight >= contact3 && !this.contact3OffOn) {
         this.contact3OffOn = true
         this.$refs.contact3.classList.add('animate-bottomToTop')

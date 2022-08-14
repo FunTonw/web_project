@@ -411,12 +411,14 @@ export default {
       // 假如滾動高度 等於大於 網頁到物件頂的高度 並且 滾動高度 等於小於 網頁到物件底的高度  background position 位移 Y +
       if (windowHeight >= webTodeBannerTop && windowHeight <= webTodeBannerBottom + 100) {
         // deBanner 的視差距離
-        this.deBannerDate = -(windowHeight - deBannerHelf) / 70
+        this.deBannerDate = -(windowHeight - deBannerHelf) / 50
       } else if (windowHeight >= webToFeatrueTop && !this.featrueOffOn) {
         // feature 的動畫時機
         this.featrueOffOn = true
         for (let i = 0; i <= featrue.childElementCount; i++) {
-          featrue.children[1].children[i].classList.add('animate-smooth' + (i + 1))
+          setTimeout(() => {
+            featrue.children[1].children[i].classList.add('animate-smooth1')
+          }, i * 200)
         }
       } else if (windowHeight >= webToStoryTop && !this.storyOffOn) {
         // story 的動畫時機
