@@ -4,8 +4,8 @@
         <NavbarList />
     </div>
     <div class="mt-56">
-      <h2 class="text-white fond-bold text-5xl">N E W S</h2>
-      <ul class="news_page_list text-xl text-xl font-bold text-white w-9/12 mx-auto mt-20 border-b-2 border-white-100">
+      <h2 class="text-white fond-bold text-5xl animate-topToBottom">N E W S</h2>
+      <ul class="news_page_list text-xl text-xl font-bold text-white w-9/12 mx-auto mt-20 border-b-2 border-white-100 animate-bottomToTop">
         <li class=" border-t-2 border-white-100">
           <a href="#">
             <div class="flex py-5">
