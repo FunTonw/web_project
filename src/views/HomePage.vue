@@ -418,7 +418,7 @@ export default {
         for (let i = 0; i <= featrue.childElementCount; i++) {
           setTimeout(() => {
             featrue.children[1].children[i].classList.add('animate-smooth1')
-          }, i * 200)
+          }, i * 400)
         }
       } else if (windowHeight >= webToStoryTop && !this.storyOffOn) {
         // story 的動畫時機
