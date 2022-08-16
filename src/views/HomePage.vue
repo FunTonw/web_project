@@ -10,7 +10,17 @@
           <img src="../assets/image/banner/static.index__message.svg" alt=""  class="mx-auto animate-fadeIn_late">
         </div>
         <div class="w-7/12 relative overflow-hidden">
-          <ul class="bg-ul flex flex-nowrap absolute animate-fadeIn_late">
+          <ul class="bg-ul flex flex-nowrap absolute" :style="{transform: `translateX(${bgPicData}px)`}" ref="bgPicList">
+            <li class="mr-4 bg-pic1">
+            </li>
+            <li class="mr-4 bg-pic2">
+            </li>
+            <li class="mr-4 bg-pic3">
+            </li>
+            <li class="mr-4 bg-pic4">
+            </li>
+            <li class="mr-4 bg-pic5">
+            </li>
             <li class="mr-4 bg-pic1">
             </li>
             <li class="mr-4 bg-pic2">
@@ -277,7 +287,9 @@
   @each $key, $val in $bgurls {
     .bg-#{$key} {background: $val;}
   }
-
+  .bg-ul {
+    // transition: 1.1s linear;
+  }
   .bg-ul > li{
     background-position: center center;
     background-size: cover;
@@ -370,10 +382,22 @@ export default {
       storyOffOn: false,
       productOffOn: false,
       itemsOffOn: false,
-      contactDate: 36
+      contactDate: 36,
+      bgPicData: 0
     }
   },
   methods: {
+    imageScroll: function () {
+      console.log(this.$refs.bgPicList.offset)
+      setInterval(() => {
+        this.bgPicData -= 1
+        if (this.bgPicData <= (-this.$refs.bgPicList.children[0].clientWidth - 16) * 5) {
+          this.bgPicData = 0
+          const liItem = '<li class="mr-4 bg-pic1"></li><li class="mr-4 bg-pic2"></li><li class="mr-4 bg-pic3"></li><li class="mr-4 bg-pic4"></li><li class="mr-4 bg-pic5"></li><li class="mr-4 bg-pic1"></li><li class="mr-4 bg-pic2"></li><li class="mr-4 bg-pic3"></li><li class="mr-4 bg-pic4"></li><li class="mr-4 bg-pic5"></li>'
+          this.$refs.bgPicList.innerHTML = liItem
+        }
+      }, 30)
+    },
     scrollListener: function () {
       const windowHeight = parseInt(window.screen.height) + parseInt(window.scrollY) // 滾動的高度
 
@@ -442,6 +466,7 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.scrollListener)
+    this.imageScroll()
   }
 }
 </script>
