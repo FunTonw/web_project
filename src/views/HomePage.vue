@@ -388,7 +388,6 @@ export default {
   },
   methods: {
     imageScroll: function () {
-      console.log(this.$refs.bgPicList.offset)
       setInterval(() => {
         this.bgPicData -= 1
         if (this.bgPicData <= (-this.$refs.bgPicList.children[0].clientWidth - 16) * 5) {
