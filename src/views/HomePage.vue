@@ -42,6 +42,7 @@
         </div>
       </div>
     </header>
+
     <div class="about container mx-auto z-20">
       <div class="about-bg w-full h-screen relative">
         <h2 class="text-red-400 pt-10 text-sm">About FruOats</h2>
@@ -168,10 +169,10 @@
     <section class="items" ref="items">
       <div class="max-w-screen-lg mx-auto py-20">
         <ul class="grid grid-cols-4 gap-3">
-          <li>
+          <li class="group">
             <a href="#">
-              <div >
-                <img src="@/assets/image/items/1_fa5fe15e-75d8-45e0-8156-29ea083372e9.webp" alt=""  class="rounded-md">
+              <div class="relative overflow-hidden rounded-md w-60 h-60">
+                <img src="@/assets/image/items/1_fa5fe15e-75d8-45e0-8156-29ea083372e9.webp" alt=""  class="absolute group-hover:scale-125 ease-in-out duration-300">
               </div>
                 <div class="text-white font-bold text-start mt-3">
                   <div class="flex items-center ">
@@ -186,10 +187,10 @@
 
             </a>
           </li>
-          <li>
+          <li class="group">
             <a href="#">
-              <div>
-                <img src="@/assets/image/items/4629d09ee093272f99b2a6f7d07e9f05_59137082-f8f2-42a7-816e-365bef03f629.webp" alt=""  class="rounded-md">
+              <div class="relative overflow-hidden rounded-md w-60 h-60">
+                <img src="@/assets/image/items/4629d09ee093272f99b2a6f7d07e9f05_59137082-f8f2-42a7-816e-365bef03f629.webp" alt=""  class="rounded-md group-hover:scale-125 ease-in-out duration-300">
               </div>
                 <div class="text-white font-bold text-start mt-3">
                   <div class="flex items-center">
@@ -253,6 +254,9 @@
         </div>
       </div>
     </section>
+    <!-- <section class="items" ref="items">
+      <ProductsContant :dataItem="productsData" />
+    </section> -->
 
     <section class="contact py-20 ">
       <div class="relative overflow-hidden"  ref="contact">
@@ -369,14 +373,18 @@
 <script>
 import NavbarList from '@/components/NavbarList.vue'
 import FooterList from '@/components/FooterList.vue'
+// import ProductsContant from '@/components/ProductsContant.vue'
+import axios from 'axios'
 
 export default {
   components: {
     NavbarList,
     FooterList
+    // ProductsContant
   },
   data () {
     return {
+      productsData: [],
       deBannerDate: 36,
       featrueOffOn: false,
       storyOffOn: false,
@@ -387,8 +395,8 @@ export default {
     }
   },
   methods: {
-    imageScroll: function () {
-      setInterval(() => {
+    imageScroll () {
+      this.t = window.setInterval(() => {
         this.bgPicData -= 1
         if (this.bgPicData <= (-this.$refs.bgPicList.children[0].clientWidth - 16) * 5) {
           this.bgPicData = 0
@@ -397,7 +405,10 @@ export default {
         }
       }, 30)
     },
-    scrollListener: function () {
+    clearImageScroll () {
+      window.clearInterval(this.t)
+    },
+    scrollListener () {
       const windowHeight = parseInt(window.screen.height) + parseInt(window.scrollY) // 滾動的高度
 
       // de-banner
@@ -463,9 +474,20 @@ export default {
       }
     }
   },
+  created () {
+    const url = 'https://cors-product.herokuapp.com/https://sheltered-oasis-69489.herokuapp.com'
+    axios.get(`${url}/api/products`)
+      .then((res) => {
+        this.productsData = res.data.data
+      })
+  },
   mounted () {
     window.addEventListener('scroll', this.scrollListener)
     this.imageScroll()
+  },
+  beforeUnmount () {
+    window.removeEventListener('scroll', this.scrollListener)
+    this.clearImageScroll()
   }
 }
 </script>

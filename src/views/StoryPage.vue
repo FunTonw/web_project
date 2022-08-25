@@ -240,7 +240,6 @@ export default {
         for (let i = 0; i < promiseContent.childElementCount; i++) {
           setTimeout(() => {
             promiseContent.childNodes[i].classList.add('animate-smooth1')
-            console.log(i + 1)
           }, i * 200)
         }
       } else if (windowHeight >= contact3 && !this.contact3OffOn) {
@@ -261,6 +260,9 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.storyLisener)
+  },
+  beforeUnmount () {
+    window.removeEventListener('scroll', this.storyLisener)
   }
 }
 </script>
