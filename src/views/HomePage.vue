@@ -473,7 +473,6 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('checkCreateData')
   },
   mounted () {
     window.addEventListener('scroll', this.scrollListener)

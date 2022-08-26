@@ -31,6 +31,9 @@ nav {
 import NavbarList from '@/components/NavbarList.vue'
 
 export default {
-  components: [NavbarList]
+  components: [NavbarList],
+  created () {
+    this.$store.dispatch('checkCreateData')
+  }
 }
 </script>

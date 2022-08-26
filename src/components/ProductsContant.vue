@@ -3,7 +3,7 @@
       <div class="max-w-screen-lg mx-auto py-20">
         <ul class="grid grid-cols-4 gap-x-5 gap-y-5">
           <li class="group" v-for="item, key in products" :key="key">
-            <a href="#">
+            <router-link :to="'/itempage/' + item.id">
               <div class="relative overflow-hidden rounded-md w-60 h-60">
                 <img :src="item.imgUrl[0]" alt=""  class="absolute group-hover:scale-125 ease-in-out duration-300">
               </div>
@@ -17,7 +17,7 @@
                     <span class="font-normal text-xs text-gray-200">税込</span>
                   </p>
                 </div>
-            </a>
+            </router-link>
           </li>
         </ul>
         <div class="mt-10 flex justify-end" v-if="this.togglePage === 'home'">
@@ -37,26 +37,9 @@
 <script>
 
 export default {
-  props: ['dataItem'],
   data () {
     return {
-      // homepage: [],
-      // itemspage: [],
       togglePage: 'home'
-    }
-  },
-  watch: {
-    // products () {
-    //   if (this.togglePage === 'home') {
-    //     this.itemspage = this.products.slice(0, 3)
-    //     console.log(this.itemspage)
-    //   } else {
-    //     this.itemspage = this.products
-    //     console.log(this.itemspage)
-    //   }
-    // }
-    products () {
-      console.log(this.products)
     }
   },
   computed: {
@@ -75,7 +58,6 @@ export default {
   },
   created () {
     this.toggleButton()
-    // console.log(this.products)
   }
 }
 </script>

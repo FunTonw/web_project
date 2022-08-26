@@ -32,7 +32,7 @@ const routes = [
     component: () => import('../views/ContactPage.vue')
   },
   {
-    path: '/itempage',
+    path: '/itempage/:id',
     component: () => import('../views/ItemPage.vue')
   }
 ]

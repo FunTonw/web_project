@@ -6,32 +6,29 @@
     <div class="bg-white my-40 py-20 rounded-md max-w-screen-xl mx-auto ">
       <div class="grid grid-cols-2 gap-5 p-28">
         <div>
-          <div class="items-img w-full h-screen mx-auto">
+          <div class="items-img w-full h-screen mx-auto" ref="itemsImg" :style="`background-image: url(${product.imgUrl[0]})`">
           </div>
           <div>
             <ul class="flex mt-3">
-              <li style="heigth: 200px; width: 100px" class="mr-3">
-                <img src="../assets/image/items/item1/aded710a6b2d6d460c5c2b814015739b_8f7e2ee4-d51c-4225-b9c1-54ad42b2177b_1000x1000.webp" alt="">
-              </li>
-              <li style="heigth: 200px; width: 100px">
-                <img src="../assets/image/items/item1/f579bbdfe2052cdd1da1bff67288b4c9_65abf815-5ac8-4135-9b7f-94d703d7d70b_1000x1000.webp" alt="">
+              <li @click="selectImg(img)" style="heigth: 200px; width: 100px" class="mr-3" v-for="img, key in product.imgUrl" :key='key'>
+                <img :src="img" alt="">
               </li>
             </ul>
           </div>
         </div>
         <div class="font-bold text-start">
-          <h2 class="text-2xl mb-5">オートミールクッキー『FruOats（フルオーツ）』ストロベリーピスタチオ 30枚入り</h2>
-          <p class="text-2xl mb-5">¥2,960
+          <h2 class="text-2xl mb-5">{{product.name}}</h2>
+          <p class="text-2xl mb-5">¥{{product.price}}
             <span class="text-sm">税込</span>
           </p>
           <button class="bg-red-500 text-white w-full mb-20 p-5 rounded-md">【Amazon Pay対応】30秒で購入</button>
           <div class="font-normal text-sm leading-6">
-            <p>＜賞味期限＞発送日より <span>約4週間~6週間</span></p>
-            <p>＜外箱サイズ＞ <span>310×226x高さ23</span></p>
-            <p>＜包装＞<span>枚ずつ個包装</span></p>
-            <p>＜配送方法＞<span>注文日の翌々日まで（土日祝日を除く）にゆうパケットにて発送</span></p>
-            <p>＜配送料＞<span>送料無料</span></p>
-            <p>＜保存方法＞<span>直射日光・高温多湿を避けて保存してください（夏場は、冷蔵or冷凍保存を推奨）</span></p>
+            <p>＜賞味期限＞発送日より <span>{{product.contant.expiryDate}}</span></p>
+            <p>＜外箱サイズ＞ <span>{{product.contant.boxSize}}</span></p>
+            <p>＜包装＞<span>{{product.contant.packing}}</span></p>
+            <p>＜配送方法＞<span>{{product.contant.shipping}}</span></p>
+            <p>＜配送料＞<span>{{product.contant.deliveryPay}}</span></p>
+            <p>＜保存方法＞<span>{{product.contant.storeMethod}}</span></p>
             <p class="text-red-600">ずっと10%OFFで買える定期購入はこちら</p>
           </div>
           <div class="mt-10">
@@ -41,15 +38,21 @@
             <ul>
               <li class="border-b py-5">
                 <h3 class="mb-5">特定原材料・原材料</h3>
-                <p class="font-normal">
+                <div class="font-normal">
                 【特定原材料】<br>
-                人工甘味料・保存料・小麦粉・バター・卵不使用
+                <p class="mb-5">
+                  <span v-for="material, key in product.materials.material" :key="key">
+                    {{material}}．
+                  </span>
+                </p>
                 <br>
                 【原材料】<br>
-                水溶性食物繊維（国内生産）、おからパウダー、ドライストロベリー、本和香糖（沖縄県産さとうきび）、米油、オートミール、ピスタチオ、アマニ、チアシード
+                 <span v-for="raw, key in product.materials.rawMaterial" :key="key">
+                  {{raw}}．
+                 </span>
                 <br>
                 ※本品製造工場では、小麦を含む製品を生産しています。
-                </p>
+                </div>
               </li>
               <li class="py-5">
                 <h3 class="mb-5">栄養成分表示（1枚あたり）</h3>
@@ -76,7 +79,6 @@
   .items-img {
     max-width: 100%;
     height: 30vw;
-    background: url('@/assets/image/items/item1/aded710a6b2d6d460c5c2b814015739b_8f7e2ee4-d51c-4225-b9c1-54ad42b2177b_1000x1000.webp');
     background-position: center center;
     background-size: cover;
   }
@@ -92,6 +94,18 @@ export default {
     NavbarList,
     FooterList,
     ItemIntro
+  },
+  // 這邊有出錯, 若在本頁重整就會出錯, 應該是組件在渲染上的先後順序導致
+  computed: {
+    product () {
+      const productItem = this.$store.state.productsdata.find(x => x.id === parseInt(this.$route.params.id))
+      return productItem
+    }
+  },
+  methods: {
+    selectImg (img) {
+      this.$refs.itemsImg.style.backgroundImage = `url(${img})`
+    }
   }
 }
 </script>

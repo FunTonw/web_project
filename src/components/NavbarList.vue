@@ -18,7 +18,7 @@
           <router-link to="/contact">聯絡我們</router-link>
         </li>
         <li class="mr-4">
-          <router-link to="/itempage">
+          <router-link to="/itempage/1">
             測試按鈕
           </router-link>
         </li>
