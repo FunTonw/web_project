@@ -21,7 +21,7 @@
           <p class="text-2xl mb-5">¥{{product.price}}
             <span class="text-sm">税込</span>
           </p>
-          <button class="bg-red-500 text-white w-full mb-20 p-5 rounded-md">【Amazon Pay対応】30秒で購入</button>
+          <button class="bg-red-500 text-white w-full mb-20 p-5 rounded-md" @click="this.addCart(product)">【Amazon Pay対応】30秒で購入</button>
           <div class="font-normal text-sm leading-6">
             <p>＜賞味期限＞発送日より <span>{{product.contant.expiryDate}}</span></p>
             <p>＜外箱サイズ＞ <span>{{product.contant.boxSize}}</span></p>
@@ -89,6 +89,8 @@
 import NavbarList from '@/components/NavbarList.vue'
 import FooterList from '@/components/FooterList.vue'
 import ItemIntro from '@/components/ItemsIntro.vue'
+import { mapMutations } from 'vuex'
+
 export default {
   components: {
     NavbarList,
@@ -104,7 +106,10 @@ export default {
   methods: {
     selectImg (img) {
       this.$refs.itemsImg.style.backgroundImage = `url(${img})`
-    }
+    },
+    ...mapMutations([
+      'addCart'
+    ])
   }
 }
 </script>

@@ -14,11 +14,21 @@ export default createStore({
   },
   mutations: {
     createData (state, data) {
-      // console.log(state.productsdata.isArray())
       state.productsdata = data
     },
     addCart (state, data) {
-      state.carts.data.push(data)
+      const cartsData = state.carts.data
+      const isCarts = cartsData.findIndex(x => x.product.id === data.id)
+      if (isCarts === -1) {
+        const pushCart = {
+          product: { ...data },
+          qty: 1
+        }
+        cartsData.push(pushCart)
+      } else {
+        cartsData[isCarts].qty += 1
+      }
+      console.log(cartsData)
     }
   },
   actions: {
