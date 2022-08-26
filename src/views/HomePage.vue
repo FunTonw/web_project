@@ -166,7 +166,7 @@
       </div>
     </section>
 
-    <section class="items" ref="items">
+    <!-- <section class="items" ref="items">
       <div class="max-w-screen-lg mx-auto py-20">
         <ul class="grid grid-cols-4 gap-3">
           <li class="group">
@@ -253,10 +253,10 @@
           </a>
         </div>
       </div>
-    </section>
-    <!-- <section class="items" ref="items">
-      <ProductsContant :dataItem="productsData" />
     </section> -->
+    <section class="items" ref="items">
+      <ProductsContant :dataItem="productsData" />
+    </section>
 
     <section class="contact py-20 ">
       <div class="relative overflow-hidden"  ref="contact">
@@ -373,14 +373,14 @@
 <script>
 import NavbarList from '@/components/NavbarList.vue'
 import FooterList from '@/components/FooterList.vue'
-// import ProductsContant from '@/components/ProductsContant.vue'
-import axios from 'axios'
+import ProductsContant from '@/components/ProductsContant.vue'
+import { onBeforeUnmount } from 'vue'
 
 export default {
   components: {
     NavbarList,
-    FooterList
-    // ProductsContant
+    FooterList,
+    ProductsContant
   },
   data () {
     return {
@@ -396,7 +396,7 @@ export default {
   },
   methods: {
     imageScroll () {
-      this.t = window.setInterval(() => {
+      const timer = window.setInterval(() => {
         this.bgPicData -= 1
         if (this.bgPicData <= (-this.$refs.bgPicList.children[0].clientWidth - 16) * 5) {
           this.bgPicData = 0
@@ -404,9 +404,9 @@ export default {
           this.$refs.bgPicList.innerHTML = liItem
         }
       }, 30)
-    },
-    clearImageScroll () {
-      window.clearInterval(this.t)
+      onBeforeUnmount(() => {
+        clearInterval(timer)
+      })
     },
     scrollListener () {
       const windowHeight = parseInt(window.screen.height) + parseInt(window.scrollY) // 滾動的高度
@@ -434,7 +434,6 @@ export default {
       // items
       const items = this.$refs.items
       const webToItemsTop = parseInt(items.offsetTop)
-      const itemsButton = this.$refs.itemsButton
 
       const contact = this.$refs.contact
       const contactHeight = parseInt(contact.clientHeight) // 物件高度
@@ -466,7 +465,6 @@ export default {
         productImg.classList.add('after:animate-rotate_right')
       } else if (windowHeight >= webToItemsTop && !this.itemsOffOn) {
         this.itemsOffOn = true
-        itemsButton.classList.add('animate-leftToRight_button')
         items.classList.add('animate-smooth1')
       } else if (windowHeight >= webTocontactTop && windowHeight <= webTocontactBottom + 100) {
         this.contactDate = -(windowHeight - contactHelf) / 10
@@ -475,11 +473,7 @@ export default {
     }
   },
   created () {
-    const url = 'https://cors-product.herokuapp.com/https://sheltered-oasis-69489.herokuapp.com'
-    axios.get(`${url}/api/products`)
-      .then((res) => {
-        this.productsData = res.data.data
-      })
+    this.$store.dispatch('checkCreateData')
   },
   mounted () {
     window.addEventListener('scroll', this.scrollListener)
@@ -487,7 +481,6 @@ export default {
   },
   beforeUnmount () {
     window.removeEventListener('scroll', this.scrollListener)
-    this.clearImageScroll()
   }
 }
 </script>

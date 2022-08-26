@@ -23,12 +23,12 @@ module.exports = {
         },
         topToBottom: {
           '0%': { transform: 'translateY(-100px)', opacity: '0' },
-          '25': { transform: 'translateY(-100px)', opacity: '0' },
+          25: { transform: 'translateY(-100px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' }
         },
         bottomToTop: {
           '0%': { transform: 'translateY(100px)', opacity: '0' },
-          '25': { transform: 'translateY(100px)', opacity: '0' },
+          25: { transform: 'translateY(100px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' }
         },
         scroll: {

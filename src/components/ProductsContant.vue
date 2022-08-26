@@ -1,27 +1,26 @@
 <template>
       <section class="items" ref="items">
       <div class="max-w-screen-lg mx-auto py-20">
-        <ul class="grid grid-cols-4 gap-3">
-          <li class="group">
+        <ul class="grid grid-cols-4 gap-x-5 gap-y-5">
+          <li class="group" v-for="item, key in products" :key="key">
             <a href="#">
               <div class="relative overflow-hidden rounded-md w-60 h-60">
-                <img src="@/assets/image/items/1_fa5fe15e-75d8-45e0-8156-29ea083372e9.webp" alt=""  class="absolute group-hover:scale-125 ease-in-out duration-300">
+                <img :src="item.imgUrl[0]" alt=""  class="absolute group-hover:scale-125 ease-in-out duration-300">
               </div>
                 <div class="text-white font-bold text-start mt-3">
                   <div class="flex items-center ">
-                    <h5 class="mr-2 text-sm">【定期購入】オートミールクッキー『FruOats（フルオーツ）』5種セット 30枚入り</h5>
+                    <h5 class="mr-2 text-sm">{{item.name}}</h5>
                     <p class="text-white">></p>
                   </div>
                   <p class="text-xl">
-                    ¥2,664
+                    ¥{{item.price}}
                     <span class="font-normal text-xs text-gray-200">税込</span>
                   </p>
                 </div>
-
             </a>
           </li>
         </ul>
-        <div class="mt-10 flex justify-end">
+        <div class="mt-10 flex justify-end" v-if="this.togglePage === 'home'">
           <a href="#" class="group flex items-center">
           <p class="text-end text-white mr-3 ">
             Products All
@@ -36,23 +35,47 @@
 </template>
 
 <script>
+
 export default {
   props: ['dataItem'],
   data () {
     return {
-      homepage: [],
-      itemspage: []
+      // homepage: [],
+      // itemspage: [],
+      togglePage: 'home'
     }
   },
   watch: {
-    dataItem () {
-      this.itemspage = this.dataItem
-      for (let i = 0; i < 4; i++) {
-        this.homepage.concat(this.dataItem[i])
-      }
-      console.log(this.homepage)
-      console.log(this.$route)
+    // products () {
+    //   if (this.togglePage === 'home') {
+    //     this.itemspage = this.products.slice(0, 3)
+    //     console.log(this.itemspage)
+    //   } else {
+    //     this.itemspage = this.products
+    //     console.log(this.itemspage)
+    //   }
+    // }
+    products () {
+      console.log(this.products)
     }
+  },
+  computed: {
+    products () {
+      if (this.togglePage === 'home') {
+        return this.$store.state.productsdata.slice(0, 4)
+      } else {
+        return this.$store.state.productsdata
+      }
+    }
+  },
+  methods: {
+    toggleButton () {
+      this.togglePage = this.$route.name === 'home' ? 'home' : 'else'
+    }
+  },
+  created () {
+    this.toggleButton()
+    // console.log(this.products)
   }
 }
 </script>
