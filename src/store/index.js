@@ -3,7 +3,12 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    productsdata: []
+    productsdata: [],
+    carts: {
+      data: [],
+      total: 0,
+      final_total: 0
+    }
   },
   getters: {
   },
@@ -11,6 +16,9 @@ export default createStore({
     createData (state, data) {
       // console.log(state.productsdata.isArray())
       state.productsdata = data
+    },
+    addCart (state, data) {
+      state.carts.data.push(data)
     }
   },
   actions: {

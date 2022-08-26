@@ -32,7 +32,7 @@ import NavbarList from '@/components/NavbarList.vue'
 
 export default {
   components: [NavbarList],
-  created () {
+  mounted () {
     this.$store.dispatch('checkCreateData')
   }
 }

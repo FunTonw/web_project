@@ -3,7 +3,7 @@
     <div class="overflow-hidden">
         <NavbarList />
     </div>
-    <div class="bg-white my-40 py-20 rounded-md max-w-screen-xl mx-auto ">
+    <div class="bg-white my-40 py-20 rounded-md max-w-screen-xl mx-auto " v-if="product">
       <div class="grid grid-cols-2 gap-5 p-28">
         <div>
           <div class="items-img w-full h-screen mx-auto" ref="itemsImg" :style="`background-image: url(${product.imgUrl[0]})`">
@@ -95,7 +95,6 @@ export default {
     FooterList,
     ItemIntro
   },
-  // 這邊有出錯, 若在本頁重整就會出錯, 應該是組件在渲染上的先後順序導致
   computed: {
     product () {
       const productItem = this.$store.state.productsdata.find(x => x.id === parseInt(this.$route.params.id))
