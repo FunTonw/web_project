@@ -31,7 +31,7 @@
     <div class="flex">
       <p class="mr-4">Login</p>
       <div>
-        <a href="#">cart</a>
+        <router-link to="/cart">cart</router-link>
       </div>
     </div>
   </div>
