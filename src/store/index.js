@@ -11,24 +11,38 @@ export default createStore({
     }
   },
   getters: {
+    cartsTotal (state) {
+      return state.carts.data.reduce((x, y) => x + y.total, 0)
+    }
   },
   mutations: {
     createData (state, data) {
       state.productsdata = data
     },
-    addCart (state, data) {
-      const cartsData = state.carts.data
+    addCart ({ carts }, data) {
+      const cartsData = carts.data
       const isCarts = cartsData.findIndex(x => x.product.id === data.id)
       if (isCarts === -1) {
         const pushCart = {
           product: { ...data },
-          qty: 1
+          qty: 1,
+          total: data.price
         }
         cartsData.push(pushCart)
       } else {
         cartsData[isCarts].qty += 1
+        cartsData[isCarts].total += cartsData[isCarts].product.price
       }
       console.log(cartsData)
+    },
+    minusCart ({ carts }, data) {
+      const cartsData = carts.data
+      const isCarts = cartsData.findIndex(x => x.product.id === data.id)
+      cartsData[isCarts].qty -= 1
+      cartsData[isCarts].total -= cartsData[isCarts].product.price
+    },
+    delCart ({ carts }, id) {
+      carts.data = carts.data.filter(x => x.product.id !== id)
     }
   },
   actions: {
