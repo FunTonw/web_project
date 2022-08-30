@@ -28,13 +28,31 @@
         <img src="../assets/image/banner/logo.svg" alt="">
       </router-link>
     </div>
-    <div class="flex">
-      <p class="mr-4">Login</p>
-      <div>
-        <router-link to="/cart">cart</router-link>
-      </div>
+    <div class="flex justify-center items-center">
+      <router-link to="/login">
+        <p class="mr-4">Login</p>
+      </router-link>
+      <router-link to="/cart">
+        <div class="relative">
+          <img src="https://cdn.shopify.com/s/files/1/0553/5131/2591/t/12/assets/static.shared__icon-cart_or.svg?v=105545836874067162481647354270" alt="" class="bg-white rounded-full p-1">
+          <div class="text-xs bg-red-600 rounded-full absolute -top-1 -right-1/4 flex justify-center items-center" style="height: 1.5rem; width: 1.5rem">
+            <p>{{cartsCount}}</p>
+          </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </div>
-
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters([
+      'cartsCount'
+    ])
+  }
+}
+</script>

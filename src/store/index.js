@@ -13,6 +13,9 @@ export default createStore({
   getters: {
     cartsTotal (state) {
       return state.carts.data.reduce((x, y) => x + y.total, 0)
+    },
+    cartsCount (state) {
+      return state.carts.data.reduce((x, y) => x + y.qty, 0)
     }
   },
   mutations: {
