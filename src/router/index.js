@@ -44,6 +44,10 @@ const routes = [
   {
     path: '/itempage/:id',
     component: () => import('../views/ItemPage.vue')
+  },
+  {
+    path: '/dashboardpage',
+    component: () => import('../views/DashboardPage.vue')
   }
 ]
 
